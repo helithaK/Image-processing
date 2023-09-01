@@ -1,10 +1,9 @@
-
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 
 # Load the image
-image = cv2.imread('spider.png', cv2.IMREAD_GRAYSCALE)
+image = cv2.imread('shells.tif', cv2.IMREAD_GRAYSCALE)
 
 # Perform histogram equalization
 equalized_image = cv2.equalizeHist(image)
@@ -21,7 +20,7 @@ plt.figure(figsize=(15, 5))
 
 # Original image
 plt.subplot(131)
-plt.imshow(image, cmap='gray')
+plt.imshow(image, cmap='gray', vmin = 0, vmax = 255)
 plt.title('Original Image')
 plt.axis('off')
 
@@ -31,11 +30,7 @@ plt.imshow(equalized_image, cmap='gray')
 plt.title('Equalized Image')
 plt.axis('off')
 
-# Transformed image
-plt.subplot(133)
-plt.imshow(transformed_image, cmap='gray')
-plt.title('Transformed Image')
-plt.axis('off')
+
 
 # Create histograms subplot
 plt.figure(figsize=(15, 5))
