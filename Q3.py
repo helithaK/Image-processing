@@ -58,3 +58,33 @@ cv2.imshow('Corrected Image', output_image)
 # Wait for a key press and close the windows
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+
+
+def histBGR(img):
+    # Define colors (b for blue, g for green, r for red)
+    colors = ('b', 'g', 'r')
+
+    # Loop over color channels and calculate histograms
+    for i, color in enumerate(colors):
+        hist = cv2.calcHist([img], [i], None, [256], [0, 256])
+        plt.plot(hist, color=color)
+        plt.xlim([0, 256])
+
+
+plt.figure(figsize = (15, 5))
+plt.rc('axes', titlesize = 15)
+
+plt.subplot(121)
+histBGR(image)
+plt.title("Histogram of original image")
+plt.xlabel("Intensity")
+plt.ylabel("Count")
+
+plt.subplot(122)
+histBGR(output_image)
+plt.title("Histogram of gamma corrected image")
+plt.xlabel("Intensity")
+plt.ylabel("Count")
+
+plt.show()
+
