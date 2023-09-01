@@ -19,7 +19,7 @@ a = max(0, min(1, a))
 
 # Apply the intensity transformation function to saturation
 transformed_saturation = np.clip(
-    saturation + (a * 255 / 128) * np.exp(-((saturation - 128) ** 2) / (2 * b ** 2)), 0, 255
+    saturation + (a * 128) * np.exp(-((saturation - 128) ** 2) / (2 * b ** 2)), 0, 255
 ).astype(np.uint8)
 
 print(saturation)
